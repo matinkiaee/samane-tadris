@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}داشبورد مدیر گروه{% endblock %}
+
+{% block content %}
+<h2>درخواست‌های ثبت‌شده مدرسان</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>نام کاربری</th>
+            <th>کد ملی</th>
+            <th>رشته</th>
+            <th>مدرک</th>
+            <th>وضعیت</th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for app in applications %}
+        <tr>
+            <td>{{ app.user.username }}</td>
+            <td>{{ app.national_id }}</td>
+            <td>{{ app.field_of_study }}</td>
+            <td>{{ app.degree }}</td>
+            <td>{{ app.status }}</td>
+            <td>
+                <a href="{% url 'group_review_application' app.pk %}">بررسی</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">هیچ درخواستی موجود نیست.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

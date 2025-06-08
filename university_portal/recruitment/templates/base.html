@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>{% block title %}سامانه جذب مدرس{% endblock %}</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 40px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+    <header>
+        <h1>سامانه جذب مدرسان</h1>
+    </header>
+
+    <div class="container">
+        {% block content %}
+        <!-- محتوای اختصاصی هر صفحه -->
+        {% endblock %}
+    </div>
+
+    <footer>
+        &copy; 2025 دانشگاه شما - تمامی حقوق محفوظ است
+    </footer>
+
+</body>
+</html>

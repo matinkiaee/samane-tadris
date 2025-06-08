@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}داشبورد معاون استان{% endblock %}
+
+{% block content %}
+<h2>درخواست‌های در حال بررسی نهایی</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>نام کاربری</th>
+            <th>رشته</th>
+            <th>مدرک</th>
+            <th>کد ملی</th>
+            <th>وضعیت</th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for app in applications %}
+        <tr>
+            <td>{{ app.user.username }}</td>
+            <td>{{ app.field_of_study }}</td>
+            <td>{{ app.degree }}</td>
+            <td>{{ app.national_id }}</td>
+            <td>{{ app.status }}</td>
+            <td>
+                <a href="{% url 'province_final_review' app.pk %}">بررسی نهایی</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">درخواستی برای بررسی نهایی وجود ندارد.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}بررسی نهایی و صدور کد مدرسی{% endblock %}
+
+{% block content %}
+<h2>بررسی نهایی درخواست تدریس</h2>
+
+<p><strong>نام کاربری:</strong> {{ application.user.username }}</p>
+<p><strong>کد ملی:</strong> {{ application.national_id }}</p>
+<p><strong>رشته:</strong> {{ application.field_of_study }}</p>
+<p><strong>مدرک:</strong> {{ application.degree }}</p>
+<p><strong>وضعیت فعلی:</strong> {{ application.status }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" name="decision" value="approve">تأیید نهایی و صدور کد مدرسی</button>
+    <button type="submit" name="decision" value="reject">رد درخواست</button>
+</form>
+
+{% if application.teacher_code %}
+    <p style="color: green;"><strong>کد مدرسی صادر شده:</strong> {{ application.teacher_code }}</p>
+{% endif %}
+{% endblock %}

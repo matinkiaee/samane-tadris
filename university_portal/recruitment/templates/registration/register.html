@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}ورود به سامانه{% endblock %}
+
+{% block content %}
+<h2>ورود کاربران</h2>
+
+<form method="post">
+    {% csrf_token %}
+    
+    <label for="username">نام کاربری:</label><br>
+    <input type="text" name="username" required><br><br>
+
+    <label for="password">رمز عبور:</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <button type="submit">ورود</button>
+</form>
+
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+{% endblock %}

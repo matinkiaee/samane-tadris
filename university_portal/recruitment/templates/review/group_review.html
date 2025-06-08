@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}بررسی اولیه درخواست{% endblock %}
+
+{% block content %}
+<h2>بررسی درخواست مدرس توسط مدیر گروه</h2>
+
+<p><strong>نام کاربری:</strong> {{ application.user.username }}</p>
+<p><strong>شماره تماس:</strong> {{ application.phone }}</p>
+<p><strong>رشته تحصیلی:</strong> {{ application.field_of_study }}</p>
+<p><strong>مدرک:</strong> {{ application.degree }}</p>
+<p><strong>رزومه:</strong> <a href="{{ application.resume.url }}">دانلود</a></p>
+<p><strong>آدرس:</strong> {{ application.address }}</p>
+<p><strong>وضعیت فعلی:</strong> {{ application.status }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" name="decision" value="approve">تأیید</button>
+    <button type="submit" name="decision" value="reject">رد</button>
+</form>
+{% endblock %}

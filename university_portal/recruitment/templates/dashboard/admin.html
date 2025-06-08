@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}داشبورد مدیر سیستم{% endblock %}
+
+{% block content %}
+<h2>پنل مدیریت سیستم</h2>
+
+<p>به پنل ادمین خوش آمدید.</p>
+
+<ul>
+    <li><a href="/admin/">ورود به محیط مدیریت Django</a></li>
+    <li><a href="{% url 'dashboard_group_manager' %}">بررسی درخواست‌ها توسط مدیر گروه</a></li>
+    <li><a href="{% url 'dashboard_security' %}">بررسی امنیتی توسط حراست</a></li>
+    <li><a href="{% url 'dashboard_province_admin' %}">بررسی نهایی توسط معاون استان</a></li>
+</ul>
+
+<p>در این بخش می‌توانید آمار کلی، لینک‌های مدیریتی و دسترسی به تمام پنل‌ها را داشته باشید.</p>
+{% endblock %}

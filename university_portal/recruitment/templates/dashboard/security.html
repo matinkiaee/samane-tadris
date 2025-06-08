@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}داشبورد کارشناس حراست{% endblock %}
+
+{% block content %}
+<h2>درخواست‌های ارسال‌شده برای بررسی امنیتی</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>نام کاربری</th>
+            <th>شماره تماس</th>
+            <th>رشته</th>
+            <th>مدرک</th>
+            <th>وضعیت</th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for app in applications %}
+        <tr>
+            <td>{{ app.user.username }}</td>
+            <td>{{ app.phone }}</td>
+            <td>{{ app.field_of_study }}</td>
+            <td>{{ app.degree }}</td>
+            <td>{{ app.status }}</td>
+            <td>
+                <a href="{% url 'security_review_application' app.pk %}">بررسی امنیتی</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">درخواستی برای بررسی وجود ندارد.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

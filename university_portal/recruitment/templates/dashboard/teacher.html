@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>داشبورد مدرس</title>
+    <style>
+        body { font-family: Tahoma; direction: rtl; background-color: #f0f0f0; padding: 40px; }
+        .card { background: white; padding: 30px; border-radius: 10px; max-width: 600px; margin: auto; box-shadow: 0 0 10px #ccc; }
+        h1 { color: #333; }
+        .status { margin-top: 20px; font-size: 18px; }
+        .code { color: green; font-weight: bold; font-size: 20px; }
+        .warning { color: orange; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>داشبورد مدرس</h1>
+
+        {% if application %}
+            <p class="status"><strong>وضعیت درخواست:</strong> {{ application.status }}</p>
+
+            {% if application.status == "تایید نهایی" %}
+                <p class="code">کد مدرسی شما: {{ application.teacher_code }}</p>
+            {% else %}
+                <p class="warning">درخواست شما هنوز نهایی نشده است.</p>
+            {% endif %}
+        {% else %}
+            <p class="warning">شما هنوز فرم درخواست تدریس را ثبت نکرده‌اید.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
